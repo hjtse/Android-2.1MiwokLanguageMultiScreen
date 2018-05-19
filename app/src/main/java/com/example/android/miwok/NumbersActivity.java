@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
@@ -31,15 +33,19 @@ public class NumbersActivity extends AppCompatActivity {
 
 
         LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
-        TextView wordView = new TextView(this);
-        wordView.setText(words.get(0));
-        rootView.addView(wordView);
-
-
 
         // Verify the contents of the list by printing out each element to the logs
-        for (int i = 0; i < words.size(); i++) {
-            Log.v("NumbersActivity", "Word at index " + i + ": " + words.get(i));
+        for (int index = 0; index < words.size(); index++) {
+            //Create a new TextView
+            TextView wordView = new TextView(this);
+
+            // Set the text to be word at the current index
+            wordView.setText(words.get(index));
+
+            // Add this TextView as another child to the root view of this layout
+            rootView.addView(wordView);
+
+//            Log.v("NumbersActivity", "Word at index " + i + ": " + words.get(i));
         }
 
     }
